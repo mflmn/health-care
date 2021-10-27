@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- 页面meta -->
+    <title>传智健康</title>
+    <meta name="description" content="传智健康">
+    <meta name="keywords" content="传智健康">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./plugins/elementui/index.css">
+    <link rel="stylesheet" href="./css/loginstyle.css">
+</head>
+
+<body class="mainBg">
+<div id="app" style="height: 798px;">
+    <div class="loginMain">
+        <div class="loginCon">
+            <div class="loginLogo"></div>
+            <form class="el-form loginForm clear" id="form" action="/login.do" method="post">
+                <div class="el-form-item">
+                    <div class="el-form-item__content">
+                        <span class="userIcon"></span>
+                        <div class="el-input">
+                            <input type="text" v-model="form.username"  autocomplete="off" name="username" placeholder="请输入用户名"
+                                   class="el-input__inner">
+                        </div>
+                    </div>
+                </div>
+                <div class="el-form-item">
+                    <div class="el-form-item__content">
+                        <span class="pwdIcon"></span>
+                        <div class="el-input el-input--suffix">
+                            <input type="password" v-model="form.password"  autocomplete="off" name="password" placeholder="请输入密码"
+                                   class="el-input__inner"/>
+                            <span class="el-input__suffix">
+                                <span class="el-input__suffix-inner">
+                                    <i class="el-input__icon el-icon-view el-input__clear"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="loginBtn">
+                    <button type="button" class="el-button el-button--primary">
+                        <span>登录</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 引入组件库 -->
+<script src="./js/vue.js"></script>
+<script src="./plugins/elementui/index.js"></script>
+<script>
+    if (top.location !== self.location) {
+        top.location = self.location;
+    }
+
+    new Vue({
+        el: '#app',
+        data: {
+            form: {
+                username: 'admin',
+                password: 'admin',
+                code: ''
+            }
+        },
+        created() {
+        },
+        methods: {
+            onSubmit() {
+                document.getElementById("form").submit();
+            }
+        }
+    });
+
+    //页面载入完毕执行函数
+    window.onload = windowHeight;
+
+    function windowHeight() {
+        var asieHeight = document.getElementById("app")
+        asieHeight.style.height = document.documentElement.clientHeight + 'px'
+    }
+</script>
+</body>
+</html>
