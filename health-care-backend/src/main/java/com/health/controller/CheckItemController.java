@@ -9,8 +9,6 @@ import com.health.pojo.CheckItem;
 import com.health.service.ICheckItemService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * @author yuelimin
  * @version 1.0.0
