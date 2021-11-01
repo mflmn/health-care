@@ -295,7 +295,6 @@
                     queryString: this.pagination.queryString//查询条件
                 };
                 axios.post("/check-item/findPage.do", param).then((response) => {
-                    alert(JSON.stringify(response.data.rows));
                     this.dataList = response.data.rows[0];
                     this.pagination.total = response.data.total;
                 });
