@@ -235,7 +235,7 @@
             handleEdit() {
                 this.$refs['dataEditForm'].validate((valid) => {
                     if (valid) {
-                        axios.post("/check-item/edit.do", this.formData).then((response) => {
+                        axios.put("/check-item/edit.do", this.formData).then((response) => {
                             // 隐藏编辑窗口
                             this.dialogFormVisible4Edit = false;
                             if (response.data.flag) {
@@ -332,7 +332,7 @@
             // 删除
             handleDelete(row) {
                 this.$confirm("确认删除吗？", "提示", {type: 'warning'}).then(() => {
-                    axios.get("/check-item/delete.do?id=" + row.id).then((res) => {
+                    axios.delete("/check-item/delete.do?id=" + row.id).then((res) => {
                         if (!res.data.flag) {
                             // 删除失败
                             this.$message.error(res.data.message);
