@@ -9,6 +9,7 @@ import com.health.pojo.CheckItem;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author yuelimin
@@ -19,6 +20,11 @@ import java.util.Collections;
 public class ICheckItemServiceImpl implements ICheckItemService {
     @Autowired
     private CheckItemDao checkItemDao;
+
+    @Override
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
+    }
 
     @Override
     public PageResult pageQuery(Integer currentPage, Integer pageSize, String queryString) {

@@ -9,6 +9,8 @@ import com.health.pojo.CheckItem;
 import com.health.service.ICheckItemService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author yuelimin
  * @version 1.0.0
@@ -19,6 +21,15 @@ import org.springframework.web.bind.annotation.*;
 public class CheckItemController {
     @Reference(version = "1.0.0")
     private ICheckItemService checkItemService;
+
+    @GetMapping("/findAll.do")
+    public Result findAll() {
+        try {
+            return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS, checkItemService.findAll());
+        } catch (Exception e) {
+            return new Result(true, MessageConstant.QUERY_CHECKITEM_FAIL);
+        }
+    }
 
     @PostMapping("/findPage.do")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean) {
