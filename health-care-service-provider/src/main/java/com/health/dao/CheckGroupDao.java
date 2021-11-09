@@ -12,6 +12,8 @@ import java.util.Map;
  * @since 11
  */
 public interface CheckGroupDao {
+    List<CheckGroup> findAll();
+
     void deleteAssoc(Integer id);
 
     void deleteById(Integer id);

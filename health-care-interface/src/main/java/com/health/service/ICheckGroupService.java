@@ -11,6 +11,8 @@ import java.util.List;
  * @since 11
  */
 public interface ICheckGroupService {
+    List<CheckGroup> findAll();
+
     void delete(Integer id);
 
     PageResult pageQuery(Integer currentPage, Integer pageSize, String queryString);

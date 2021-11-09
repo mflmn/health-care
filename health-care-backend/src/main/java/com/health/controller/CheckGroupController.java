@@ -20,6 +20,17 @@ public class CheckGroupController {
     @Reference(version = "1.0.0")
     private ICheckGroupService checkGroupService;
 
+    @GetMapping("/findAll.do")
+    public Result findAll() {
+        try {
+            return new Result(true, MessageConstant.QUERY_CHECKGROUP_SUCCESS, checkGroupService.findAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new Result(true, MessageConstant.QUERY_CHECKGROUP_FAIL);
+    }
+
     @DeleteMapping("/delete.do")
     public Result delete(@RequestParam("id") Integer id) {
         try {

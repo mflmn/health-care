@@ -26,6 +26,11 @@ public class ICheckGroupServiceImpl implements ICheckGroupService {
     private CheckGroupDao checkGroupDao;
 
     @Override
+    public List<CheckGroup> findAll() {
+        return checkGroupDao.findAll();
+    }
+
+    @Override
     public void delete(Integer id) {
         checkGroupDao.deleteAssoc(id);
         checkGroupDao.deleteById(id);
