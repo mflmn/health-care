@@ -1,5 +1,9 @@
 package com.health.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,6 +12,9 @@ import java.util.List;
  *
  * @author yuelimin
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Setmeal implements Serializable {
     private static final long serialVersionUID = 4875772601103951502L;
 
