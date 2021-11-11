@@ -1,8 +1,8 @@
-define("ace/theme/dracula",["require","exports","module","ace/lib/dom"], function(require, exports, module) {
+define("ace/theme/dracula", ["require", "exports", "module", "ace/lib/dom"], function (require, exports, module) {
 
-exports.isDark = true;
-exports.cssClass = "ace-dracula";
-exports.cssText = "\
+    exports.isDark = true;
+    exports.cssClass = "ace-dracula";
+    exports.cssText = "\
 ace-dracula .ace_gutter {\
 background: #282a36;\
 color: rgb(144,145,148)\
@@ -116,6 +116,6 @@ color: #ff79c6\
 }\
 ";
 
-var dom = require("../lib/dom");
-dom.importCssString(exports.cssText, exports.cssClass);
+    var dom = require("../lib/dom");
+    dom.importCssString(exports.cssText, exports.cssClass);
 });

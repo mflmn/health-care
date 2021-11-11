@@ -1,7 +1,7 @@
-define("ace/snippets/csound_document",["require","exports","module"], function(require, exports, module) {
-"use strict";
+define("ace/snippets/csound_document", ["require", "exports", "module"], function (require, exports, module) {
+    "use strict";
 
-exports.snippetText = "# <CsoundSynthesizer>\n\
+    exports.snippetText = "# <CsoundSynthesizer>\n\
 snippet synth\n\
 	<CsoundSynthesizer>\n\
 	<CsInstruments>\n\
@@ -12,6 +12,6 @@ snippet synth\n\
 	</CsScore>\n\
 	</CsoundSynthesizer>\n\
 ";
-exports.scope = "csound_document";
+    exports.scope = "csound_document";
 
 });

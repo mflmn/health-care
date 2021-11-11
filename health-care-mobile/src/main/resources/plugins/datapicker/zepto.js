@@ -96,6 +96,7 @@ var Zepto = function () {
         e(t);
         for (var n in t.childNodes) G(t.childNodes[n], e)
     }
+
     var t, e, n, i, C, N, r = [],
         o = r.slice,
         s = r.filter,
@@ -228,7 +229,8 @@ var Zepto = function () {
                 if (e.call(t[n], n, t[n]) === !1) return t
         } else
             for (i in t)
-                if (e.call(t[i], i, t[i]) === !1) return t; return t
+                if (e.call(t[i], i, t[i]) === !1) return t;
+        return t
     }, n.grep = function (t, e) {
         return s.call(t, e)
     }, window.JSON && (n.parseJSON = JSON.parse), n.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function (t, e) {
@@ -385,7 +387,7 @@ var Zepto = function () {
             if (this[0]) {
                 n(this[0]).before(t = n(t));
                 for (var e;
-                    (e = t.children()).length;) t = e.first();
+                     (e = t.children()).length;) t = e.first();
                 n(t).append(this)
             }
             return this
@@ -599,8 +601,8 @@ var Zepto = function () {
         var i = e % 2;
         n.fn[t] = function () {
             var t, o, r = n.map(arguments, function (e) {
-                return t = L(e), "object" == t || "array" == t || null == e ? e : S.fragment(e)
-            }),
+                    return t = L(e), "object" == t || "array" == t || null == e ? e : S.fragment(e)
+                }),
                 s = this.length > 1;
             return r.length < 1 ? this : this.each(function (t, a) {
                 o = i ? a : a.parentNode, a = 0 == e ? a.nextSibling : 1 == e ? a.firstChild : 2 == e ? a : null, r.forEach(function (t) {
@@ -695,6 +697,7 @@ window.Zepto = Zepto, void 0 === window.$ && (window.$ = Zepto),
             for (e in t) w.test(e) || t[e] === n || (i[e] = t[e]);
             return j(i, t)
         }
+
         var n, e = 1,
             i = Array.prototype.slice,
             r = t.isFunction,
@@ -728,10 +731,10 @@ window.Zepto = Zepto, void 0 === window.$ && (window.$ = Zepto),
             return this.on(t, e, n, i, 1)
         };
         var x = function () {
-            return !0
-        }, b = function () {
-            return !1
-        }, w = /^([A-Z]|returnValue$|layer[XY]$)/,
+                return !0
+            }, b = function () {
+                return !1
+            }, w = /^([A-Z]|returnValue$|layer[XY]$)/,
             E = {
                 preventDefault: "isDefaultPrevented",
                 stopImmediatePropagation: "isImmediatePropagationStopped",
@@ -787,7 +790,8 @@ window.Zepto = Zepto, void 0 === window.$ && (window.$ = Zepto),
                 return t ? this.bind(e, t) : this.each(function () {
                     try {
                         this[e]()
-                    } catch (t) { }
+                    } catch (t) {
+                    }
                 }), this
             }
         }), t.Event = function (t, e) {
@@ -838,7 +842,8 @@ window.Zepto = Zepto, void 0 === window.$ && (window.$ = Zepto),
             n.complete.call(i, e, t), h(n, i, "ajaxComplete", [e, n]), d(n)
         }
 
-        function x() { }
+        function x() {
+        }
 
         function b(t) {
             return t && (t = t.split(";", 2)[0]), t && (t == f ? "html" : t == u ? "json" : s.test(t) ? "script" : a.test(t) && "xml") || "text"
@@ -868,6 +873,7 @@ window.Zepto = Zepto, void 0 === window.$ && (window.$ = Zepto),
                 o = t.type(u), r && (n = i ? r : r + "[" + (a || "object" == o || "array" == o ? n : "") + "]"), !r && s ? e.add(u.name, u.value) : "array" == o || !i && "object" == o ? S(e, u, i, n) : e.add(n, u)
             })
         }
+
         var i, r, e = 0,
             n = window.document,
             o = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,

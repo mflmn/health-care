@@ -1,7 +1,7 @@
-define("ace/snippets/csound_orchestra",["require","exports","module"], function(require, exports, module) {
-"use strict";
+define("ace/snippets/csound_orchestra", ["require", "exports", "module"], function (require, exports, module) {
+    "use strict";
 
-exports.snippetText = "# else\n\
+    exports.snippetText = "# else\n\
 snippet else\n\
 	else\n\
 		${1:/* statements */}\n\
@@ -49,6 +49,6 @@ snippet while\n\
 		${2:/* statements */}\n\
 	od\n\
 ";
-exports.scope = "csound_orchestra";
+    exports.scope = "csound_orchestra";
 
 });

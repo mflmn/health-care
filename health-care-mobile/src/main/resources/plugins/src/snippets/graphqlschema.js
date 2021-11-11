@@ -1,7 +1,7 @@
-define("ace/snippets/graphqlschema",["require","exports","module"], function(require, exports, module) {
-"use strict";
+define("ace/snippets/graphqlschema", ["require", "exports", "module"], function (require, exports, module) {
+    "use strict";
 
-exports.snippetText = "# Type Snippet\n\
+    exports.snippetText = "# Type Snippet\n\
 trigger type\n\
 snippet type\n\
 	type ${1:type_name} {\n\
@@ -34,6 +34,6 @@ snippet enum\n\
 		${2:enum_siblings}\n\
 	}\n\
 ";
-exports.scope = "graphqlschema";
+    exports.scope = "graphqlschema";
 
 });

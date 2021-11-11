@@ -1,4 +1,3 @@
-
 //datePicker日期控件 v1.0
 
 //var calendar = new datePicker();
@@ -14,8 +13,8 @@
 //    }
 //});
 
-window.datePicker = (function() {
-    var MobileCalendar = function() {
+window.datePicker = (function () {
+    var MobileCalendar = function () {
         this.gearDate;
         this.minY = 1900;
         this.minM = 1;
@@ -23,17 +22,17 @@ window.datePicker = (function() {
         this.maxY = 2099;
         this.maxM = 12;
         this.maxD = 31;
-        this.value="";
+        this.value = "";
     };
-    
-    var cssHtm='.gearYM,.gearDate,.gearDatetime,.gearTime{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:10px;background-color:rgba(0,0,0,0.2);display:block;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9900;overflow:hidden;-webkit-animation-fill-mode:both;animation-fill-mode:both}.date_ctrl{vertical-align:middle;background-color:#d5d8df;color:#000;margin:0;height:auto;width:100%;position:absolute;left:0;bottom:0;z-index:9901;overflow:hidden;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.slideInUp{animation:slideInUp .3s ease;-webkit-animation:slideInUp .3s ease;}@-webkit-keyframes slideInUp{from{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}to{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}}.ym_roll,.date_roll,.datetime_roll,.time_roll{display:-webkit-box;width:100%;height:auto;overflow:hidden;font-weight:bold;background-color:transparent;-webkit-mask:-webkit-gradient(linear,0% 50%,0% 100%,from(#debb47),to(rgba(36,142,36,0)));-webkit-mask:-webkit-linear-gradient(top,#debb47 50%,rgba(36,142,36,0))}.ym_roll>div,.date_roll>div,.datetime_roll>div,.time_roll>div{font-size:2.3em;height:6em;float:left;background-color:transparent;position:relative;overflow:hidden;-webkit-box-flex:4}.ym_roll>div .gear,.date_roll>div .gear,.datetime_roll>div .gear,.time_roll>div .gear{width:100%;float:left;position:absolute;z-index:9902;margin-top:-6em}.date_roll_mask{-webkit-mask:-webkit-gradient(linear,0% 40%,0% 0%,from(#debb47),to(rgba(36,142,36,0)));-webkit-mask:-webkit-linear-gradient(bottom,#debb47 50%,rgba(36,142,36,0));padding:0 0 3em 0}.date_roll>div:nth-child(2){-webkit-box-flex:2}.date_roll>div:nth-child(1),.datetime_roll>div:nth-child(1){-webkit-box-flex:4}.datetime_roll>div:first-child{-webkit-box-flex:6}.datetime_roll>div:last-child{-webkit-box-flex:6}.date_grid{position:relative;top:2em;width:100%;height:2em;margin:0;box-sizing:border-box;z-index:0;border-top:1px solid #abaeb5;border-bottom:1px solid #abaeb5}.date_grid>div{color:#000;position:absolute;right:0;top:0;font-size:.8em;line-height:2.5em}.date_roll>div:nth-child(3) .date_grid>div{left:42%}.datetime_roll>div .date_grid>div{right:0}.datetime_roll>div:first-child .date_grid>div{left:auto;right:0%}.datetime_roll>div:last-child .date_grid>div{left:50%}.time_roll>div:nth-child(1) .date_grid>div{right:1em}.ym_roll>div:nth-child(1) .date_grid>div{right:.1em}.ym_roll>div .date_grid>div,.time_roll>div .date_grid>div{right:5em}.date_btn{color:#0575f2;font-size:1.6em;font-weight:bold;line-height:1em;text-align:center;padding:.8em 1em}.date_btn_box:before,.date_btn_box:after{content:"";position:absolute;height:1px;width:100%;display:block;background-color:#96979b;z-index:15;-webkit-transform:scaleY(0.33);transform:scaleY(0.33)}.date_btn_box{display:-webkit-box;-webkit-box-pack:justify;-webkit-box-align:stretch;background-color:#f1f2f4;position:relative}.date_btn_box:before{left:0;top:0;-webkit-transform-origin:50% 20%;transform-origin:50% 20%}.date_btn_box:after{left:0;bottom:0;-webkit-transform-origin:50% 70%;transform-origin:50% 70%}.date_roll>div:nth-child(1) .gear{text-indent:20%}.date_roll>div:nth-child(2) .gear{text-indent:-20%}.date_roll>div:nth-child(3) .gear{text-indent:-55%}.datetime_roll>div .gear{width:100%;text-indent:-25%}.datetime_roll>div:first-child .gear{text-indent:-10%}.datetime_roll>div:last-child .gear{text-indent:-50%}.ym_roll>div .gear,.time_roll>div .gear{width:100%;text-indent:-70%}.ym_roll>div:nth-child(1) .gear,.time_roll>div:nth-child(1) .gear{width:100%;text-indent:10%}.tooth{height:2em;line-height:2em;text-align:center}';
+
+    var cssHtm = '.gearYM,.gearDate,.gearDatetime,.gearTime{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:10px;background-color:rgba(0,0,0,0.2);display:block;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9900;overflow:hidden;-webkit-animation-fill-mode:both;animation-fill-mode:both}.date_ctrl{vertical-align:middle;background-color:#d5d8df;color:#000;margin:0;height:auto;width:100%;position:absolute;left:0;bottom:0;z-index:9901;overflow:hidden;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.slideInUp{animation:slideInUp .3s ease;-webkit-animation:slideInUp .3s ease;}@-webkit-keyframes slideInUp{from{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}to{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}}.ym_roll,.date_roll,.datetime_roll,.time_roll{display:-webkit-box;width:100%;height:auto;overflow:hidden;font-weight:bold;background-color:transparent;-webkit-mask:-webkit-gradient(linear,0% 50%,0% 100%,from(#debb47),to(rgba(36,142,36,0)));-webkit-mask:-webkit-linear-gradient(top,#debb47 50%,rgba(36,142,36,0))}.ym_roll>div,.date_roll>div,.datetime_roll>div,.time_roll>div{font-size:2.3em;height:6em;float:left;background-color:transparent;position:relative;overflow:hidden;-webkit-box-flex:4}.ym_roll>div .gear,.date_roll>div .gear,.datetime_roll>div .gear,.time_roll>div .gear{width:100%;float:left;position:absolute;z-index:9902;margin-top:-6em}.date_roll_mask{-webkit-mask:-webkit-gradient(linear,0% 40%,0% 0%,from(#debb47),to(rgba(36,142,36,0)));-webkit-mask:-webkit-linear-gradient(bottom,#debb47 50%,rgba(36,142,36,0));padding:0 0 3em 0}.date_roll>div:nth-child(2){-webkit-box-flex:2}.date_roll>div:nth-child(1),.datetime_roll>div:nth-child(1){-webkit-box-flex:4}.datetime_roll>div:first-child{-webkit-box-flex:6}.datetime_roll>div:last-child{-webkit-box-flex:6}.date_grid{position:relative;top:2em;width:100%;height:2em;margin:0;box-sizing:border-box;z-index:0;border-top:1px solid #abaeb5;border-bottom:1px solid #abaeb5}.date_grid>div{color:#000;position:absolute;right:0;top:0;font-size:.8em;line-height:2.5em}.date_roll>div:nth-child(3) .date_grid>div{left:42%}.datetime_roll>div .date_grid>div{right:0}.datetime_roll>div:first-child .date_grid>div{left:auto;right:0%}.datetime_roll>div:last-child .date_grid>div{left:50%}.time_roll>div:nth-child(1) .date_grid>div{right:1em}.ym_roll>div:nth-child(1) .date_grid>div{right:.1em}.ym_roll>div .date_grid>div,.time_roll>div .date_grid>div{right:5em}.date_btn{color:#0575f2;font-size:1.6em;font-weight:bold;line-height:1em;text-align:center;padding:.8em 1em}.date_btn_box:before,.date_btn_box:after{content:"";position:absolute;height:1px;width:100%;display:block;background-color:#96979b;z-index:15;-webkit-transform:scaleY(0.33);transform:scaleY(0.33)}.date_btn_box{display:-webkit-box;-webkit-box-pack:justify;-webkit-box-align:stretch;background-color:#f1f2f4;position:relative}.date_btn_box:before{left:0;top:0;-webkit-transform-origin:50% 20%;transform-origin:50% 20%}.date_btn_box:after{left:0;bottom:0;-webkit-transform-origin:50% 70%;transform-origin:50% 70%}.date_roll>div:nth-child(1) .gear{text-indent:20%}.date_roll>div:nth-child(2) .gear{text-indent:-20%}.date_roll>div:nth-child(3) .gear{text-indent:-55%}.datetime_roll>div .gear{width:100%;text-indent:-25%}.datetime_roll>div:first-child .gear{text-indent:-10%}.datetime_roll>div:last-child .gear{text-indent:-50%}.ym_roll>div .gear,.time_roll>div .gear{width:100%;text-indent:-70%}.ym_roll>div:nth-child(1) .gear,.time_roll>div:nth-child(1) .gear{width:100%;text-indent:10%}.tooth{height:2em;line-height:2em;text-align:center}';
     var cssEle = document.createElement("style");
-	cssEle.type = "text/css";
-	cssEle.appendChild(document.createTextNode(cssHtm));
-	document.getElementsByTagName("head")[0].appendChild(cssEle);
-	
+    cssEle.type = "text/css";
+    cssEle.appendChild(document.createTextNode(cssHtm));
+    document.getElementsByTagName("head")[0].appendChild(cssEle);
+
     MobileCalendar.prototype = {
-        init: function(params) {
+        init: function (params) {
             this.type = params.type;
             this.trigger = document.querySelector(params.trigger);
             if (this.trigger.getAttribute("data-lcalendar") != null) {
@@ -46,28 +45,32 @@ window.datePicker = (function() {
                 this.maxY = ~~maxArr[0];
                 this.maxM = ~~maxArr[1];
                 this.maxD = ~~maxArr[2];
-            };
+            }
+            ;
             if (params.minDate) {
                 var minArr = params.minDate.split('-');
                 this.minY = ~~minArr[0];
                 this.minM = ~~minArr[1];
                 this.minD = ~~minArr[2];
-            };
+            }
+            ;
             if (params.maxDate) {
                 var maxArr = params.maxDate.split('-');
                 this.maxY = ~~maxArr[0];
                 this.maxM = ~~maxArr[1];
                 this.maxD = ~~maxArr[2];
-            };
-            this.onClose= params.onClose;
-            this.onSubmit= params.onSubmit;
-            this.onChange= params.onChange;
+            }
+            ;
+            this.onClose = params.onClose;
+            this.onSubmit = params.onSubmit;
+            this.onChange = params.onChange;
             this.bindEvent(this.type);
         },
-        bindEvent: function(type) {
+        bindEvent: function (type) {
             var _self = this;
-            var isTouched = false , isMoved = false;
+            var isTouched = false, isMoved = false;
             var pree;
+
             //呼出日期插件
             function popupDate(e) {
                 _self.gearDate = document.createElement("div");
@@ -135,6 +138,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseleave', gearTouchOut);
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseup', gearTouchOut);
             }
+
             //初始化年月日插件默认值
             function dateCtrlInit() {
                 var date = new Date();
@@ -156,6 +160,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".date_dd").setAttribute("val", dateArr.dd);
                 setDateGearTooth();
             }
+
             //呼出年月插件
             function popupYM(e) {
                 _self.gearDate = document.createElement("div");
@@ -210,6 +215,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseleave', gearTouchOut);
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseup', gearTouchOut);
             }
+
             //初始化年月插件默认值
             function ymCtrlInit() {
                 var date = new Date();
@@ -228,6 +234,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".date_mm").setAttribute("val", dateArr.mm);
                 setDateGearTooth();
             }
+
             //呼出日期+时间插件
             function popupDateTime(e) {
                 _self.gearDate = document.createElement("div");
@@ -321,6 +328,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseleave', gearTouchOut);
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseup', gearTouchOut);
             }
+
             //初始化年月日时分插件默认值
             function dateTimeCtrlInit() {
                 var date = new Date();
@@ -349,6 +357,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".time_mm").setAttribute("val", dateArr.mi);
                 setTimeGearTooth();
             }
+
             //呼出时间插件
             function popupTime(e) {
                 _self.gearDate = document.createElement("div");
@@ -403,6 +412,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseleave', gearTouchOut);
                 _self.gearDate.querySelector(".date_roll_mask").addEventListener('mouseup', gearTouchOut);
             }
+
             //初始化时分插件默认值
             function timeCtrlInit() {
                 var d = new Date();
@@ -419,6 +429,7 @@ window.datePicker = (function() {
                 _self.gearDate.querySelector(".time_mm").setAttribute("val", e.mm);
                 setTimeGearTooth();
             }
+
             //重置日期节点个数
             function setDateGearTooth() {
                 var passY = _self.maxY - _self.minY + 1;
@@ -516,6 +527,7 @@ window.datePicker = (function() {
                     return;
                 }
             }
+
             //重置时间节点个数
             function setTimeGearTooth() {
                 var time_hh = _self.gearDate.querySelector(".time_hh");
@@ -545,6 +557,7 @@ window.datePicker = (function() {
                     return
                 }
             }
+
             //求月份最大天数
             function calcDays(year, month) {
                 if (month == 1) {
@@ -562,9 +575,10 @@ window.datePicker = (function() {
                     }
                 }
             }
+
             //触摸开始
             function gearTouchStart(e) {
-            	if (isMoved || isTouched) return;            	
+                if (isMoved || isTouched) return;
                 isTouched = true;
                 e.preventDefault();
                 var target = e.target;
@@ -583,16 +597,18 @@ window.datePicker = (function() {
                     target["o_d_" + target.id] = parseFloat(top.replace(/em/g, ""));
                 } else {
                     target["o_d_" + target.id] = 0;
-                };
-                pree=e;
+                }
+                ;
+                pree = e;
             }
+
             //手指移动
             function gearTouchMove(e) {
-            	if (!isTouched) return;
-            	isMoved = true;
+                if (!isTouched) return;
+                isMoved = true;
                 e.preventDefault();
-                if(pree) var target = pree.target; else
-                var target = e.target;
+                if (pree) var target = pree.target; else
+                    var target = e.target;
                 while (true) {
                     if (!target.classList.contains("gear")) {
                         target = target.parentElement;
@@ -608,16 +624,17 @@ window.datePicker = (function() {
                 target.style["-webkit-transform"] = 'translate3d(0,' + target["pos_" + target.id] + 'em,0)';
                 target.setAttribute('top', target["pos_" + target.id] + 'em');
             }
+
             //离开屏幕
             function gearTouchEnd(e) {
-            	if (!isTouched || !isMoved) {
+                if (!isTouched || !isMoved) {
                     isTouched = isMoved = false;
                     return;
                 }
                 isTouched = isMoved = false;
                 e.preventDefault();
-                if(pree) var target = pree.target; else
-                var target = e.target;
+                if (pree) var target = pree.target; else
+                    var target = e.target;
                 while (true) {
                     if (!target.classList.contains("gear")) {
                         target = target.parentElement;
@@ -639,23 +656,26 @@ window.datePicker = (function() {
                     target["pos_" + target.id] = 0;
                 }
                 rollGear(target);
-                pree=null;
+                pree = null;
             };
+
             //离开区域
             function gearTouchOut(e) {
-            	gearTouchEnd(pree);
+                gearTouchEnd(pree);
             };
+
             //缓动效果
             function rollGear(target) {
                 var d = 0;
                 var stopGear = false;
                 var passY = _self.maxY - _self.minY + 1;
                 clearInterval(target["int_" + target.id]);
-                target["int_" + target.id] = setInterval(function() {
+                target["int_" + target.id] = setInterval(function () {
                     var pos = target["pos_" + target.id];
                     var speed = target["spd_" + target.id] * Math.exp(-0.1 * d);
                     pos += speed;
-                    if (Math.abs(speed) > 0.1) {} else {
+                    if (Math.abs(speed) > 0.1) {
+                    } else {
                         speed = 0.1;
                         var b = Math.round(pos / 2) * 2;
                         if (Math.abs(pos - b) < 0.05) {
@@ -770,6 +790,7 @@ window.datePicker = (function() {
                     d++;
                 }, 30);
             }
+
             //控制插件滚动后停留的值
             function setGear(target, val) {
                 val = Math.round(val);
@@ -780,15 +801,17 @@ window.datePicker = (function() {
                     setTimeGearTooth();
                 }
             }
+
             //取消
             function closeMobileCalendar(e) {
                 e.preventDefault();
                 isTouched = isMoved = false;
-                if(_self.onClose) _self.onClose();
+                if (_self.onClose) _self.onClose();
                 var evt = new CustomEvent('input');
                 _self.trigger.dispatchEvent(evt);
                 document.body.removeChild(_self.gearDate);
             }
+
             //日期确认
             function finishMobileDate(e) {
                 var passY = _self.maxY - _self.minY + 1;
@@ -799,9 +822,10 @@ window.datePicker = (function() {
                 date_dd = date_dd > 9 ? date_dd : '0' + date_dd;
                 _self.trigger.value = (date_yy % passY + _self.minY) + "-" + date_mm + "-" + date_dd;
                 _self.value = _self.trigger.value;
-                if(_self.onSubmit) _self.onSubmit();
+                if (_self.onSubmit) _self.onSubmit();
                 closeMobileCalendar(e);
             }
+
             //年月确认
             function finishMobileYM(e) {
                 var passY = _self.maxY - _self.minY + 1;
@@ -810,9 +834,10 @@ window.datePicker = (function() {
                 date_mm = date_mm > 9 ? date_mm : '0' + date_mm;
                 _self.trigger.value = (date_yy % passY + _self.minY) + "-" + date_mm;
                 _self.value = _self.trigger.value;
-                if(_self.onSubmit) _self.onSubmit();
+                if (_self.onSubmit) _self.onSubmit();
                 closeMobileCalendar(e);
             }
+
             //日期时间确认
             function finishMobileDateTime(e) {
                 var passY = _self.maxY - _self.minY + 1;
@@ -827,9 +852,10 @@ window.datePicker = (function() {
                 time_mm = time_mm > 9 ? time_mm : '0' + time_mm;
                 _self.trigger.value = (date_yy % passY + _self.minY) + "-" + date_mm + "-" + date_dd + " " + (time_hh.length < 2 ? "0" : "") + time_hh + (time_mm.length < 2 ? ":0" : ":") + time_mm;
                 _self.value = _self.trigger.value;
-                if(_self.onSubmit) _self.onSubmit();
+                if (_self.onSubmit) _self.onSubmit();
                 closeMobileCalendar(e);
             }
+
             //时间确认
             function finishMobileTime(e) {
                 var time_hh = parseInt(Math.round(_self.gearDate.querySelector(".time_hh").getAttribute("val")));
@@ -838,9 +864,10 @@ window.datePicker = (function() {
                 time_mm = time_mm > 9 ? time_mm : '0' + time_mm;
                 _self.trigger.value = (time_hh.length < 2 ? "0" : "") + time_hh + (time_mm.length < 2 ? ":0" : ":") + time_mm;
                 _self.value = _self.trigger.value;
-                if(_self.onSubmit) _self.onSubmit();
+                if (_self.onSubmit) _self.onSubmit();
                 closeMobileCalendar(e);
             }
+
             _self.trigger.addEventListener('click', {
                 "ym": popupYM,
                 "date": popupDate,

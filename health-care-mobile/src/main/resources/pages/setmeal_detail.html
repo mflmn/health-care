@@ -2,14 +2,14 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../img/asset-favico.ico">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui"
+          name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="../img/asset-favico.ico" rel="icon">
     <title>预约详情</title>
-    <link rel="stylesheet" href="../css/page-health-orderDetail.css" />
+    <link href="../css/page-health-orderDetail.css" rel="stylesheet"/>
     <script src="../plugins/vue/vue.js"></script>
     <script src="../plugins/vue/axios-0.18.0.js"></script>
     <script src="../plugins/healthmobile.js"></script>
@@ -17,8 +17,8 @@
         var id = getUrlParam("id");
     </script>
 </head>
-<body data-spy="scroll" data-target="#myNavbar" data-offset="150">
-<div id="app" class="app">
+<body data-offset="150" data-spy="scroll" data-target="#myNavbar">
+<div class="app" id="app">
     <!-- 页面头部 -->
     <div class="top-header">
         <span class="f-left"><i class="icon-back" onclick="history.go(-1)"></i></span>
@@ -29,13 +29,13 @@
     <div class="contentBox">
         <div class="card">
             <div class="project-img">
-                <img :src="imgUrl" width="100%" height="100%" />
+                <img :src="imgUrl" height="100%" width="100%"/>
             </div>
             <div class="project-text">
                 <h4 class="tit">{{setmeal.name}}</h4>
                 <p class="subtit">{{setmeal.remark}}</p>
                 <p class="keywords">
-                    <span>{{setmeal.sex == '0' ? '性别不限' : setmeal.sex == '1' ? '男':'女'}}</span>
+                    <span>{{setmeal.sex == '0' ? '性别不限' : setmeal.sex == '1' ? '男' : '女'}}</span>
                     <span>{{setmeal.age}}</span>
                 </p>
             </div>
@@ -80,19 +80,19 @@
 </div>
 <script>
     var vue = new Vue({
-        el:'#app',
-        data:{
-            imgUrl:null,//套餐对应的图片链接
-            setmeal:{}
+        el: '#app',
+        data: {
+            imgUrl: null,//套餐对应的图片链接
+            setmeal: {}
         },
-        methods:{
-            toOrderInfo(){
+        methods: {
+            toOrderInfo() {
                 window.location.href = "orderInfo.html?id=" + id;
             }
         },
-        mounted(){
+        mounted() {
             axios.post("/setmeal/findById.do?id=" + id).then((response) => {
-                if(response.data.flag){
+                if (response.data.flag) {
                     this.setmeal = response.data.data;
                     this.imgUrl = 'http://pqjroc654.bkt.clouddn.com/' + this.setmeal.img;
                 }
