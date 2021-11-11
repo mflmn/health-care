@@ -13,6 +13,7 @@
         <module>health-care-interface</module>
         <module>health-care-service-provider</module>
         <module>health-care-backend</module>
+        <module>health-care-mobile</module>
     </modules>
 
     <properties>
