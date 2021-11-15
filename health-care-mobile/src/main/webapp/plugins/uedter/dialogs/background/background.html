@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <script src="../internal.js" type="text/javascript"></script>
+    <link href="background.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="wrapper" id="bg_container">
+    <div class="tabhead" id="tabHeads">
+        <span class="focus" data-content-id="normal"><var id="lang_background_normal"></var></span>
+        <span class="" data-content-id="imgManager"><var id="lang_background_local"></var></span>
+    </div>
+    <div class="tabbody" id="tabBodys">
+        <div class="panel focus" id="normal">
+            <fieldset class="bgarea">
+                <legend><var id="lang_background_set"></var></legend>
+                <div class="content">
+                    <div>
+                        <label><input checked="checked" class="iptradio" id="nocolorRadio" name="t" type="radio"
+                                      value="none"><var id="lang_background_none"></var></label>
+                        <label><input class="iptradio" id="coloredRadio" name="t" type="radio" value="color"><var
+                                id="lang_background_colored"></var></label>
+                    </div>
+                    <div class="wrapcolor pl">
+                        <div class="color">
+                            <var id="lang_background_color"></var>:
+                        </div>
+                        <div id="colorPicker"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wrapcolor pl">
+                        <label><var id="lang_background_netimg"></var>:</label><input class="txt" id="url" type="text">
+                    </div>
+                    <div class="alignment" id="alignment">
+                        <var id="lang_background_align"></var>:<select id="repeatType">
+                        <option value="center"></option>
+                        <option value="repeat-x"></option>
+                        <option value="repeat-y"></option>
+                        <option value="repeat"></option>
+                        <option value="self"></option>
+                    </select>
+                    </div>
+                    <div id="custom">
+                        <var id="lang_background_position"></var>:x:<input id="x" maxlength="4" size="1" type="text"
+                                                                           value="0">px&nbsp;&nbsp;y:<input id="y"
+                                                                                                            maxlength="4"
+                                                                                                            size="1"
+                                                                                                            type="text"
+                                                                                                            value="0">px
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+        <div class="panel" id="imgManager">
+            <div id="imageList" style=""></div>
+        </div>
+    </div>
+</div>
+<script src="background.js" type="text/javascript"></script>
+</body>
+</html>

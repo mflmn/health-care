@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>插入音乐</title>
+    <script src="../internal.js" type="text/javascript"></script>
+    <link href="music.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="searchBar">
+        <input id="J_searchName" type="text"/>
+        <input class="searchBtn" id="J_searchBtn" type="button">
+    </div>
+    <div class="resultBar" id="J_resultBar">
+        <div class="loading" style="display:none"></div>
+        <div class="empty"><var id="lang_input_tips"></var></div>
+    </div>
+    <div id="J_preview"></div>
+</div>
+<script src="music.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var music = new Music;
+    dialog.onok = function () {
+        music.exec();
+    };
+    dialog.oncancel = function () {
+        $G('J_preview').innerHTML = "";
+    };
+</script>
+</body>
+</html>
