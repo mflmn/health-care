@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.health.dao.IMobileDao">
+
+    <select id="findAllMember" resultType="com.health.pojo.Member">
+        select *
+        from t_member
+    </select>
+
+    <!--根据条件查询-->
+    <select id="selectMemberByCondition"
+            parameterType="string" resultType="com.health.pojo.Member">
+        select * from t_member
+        <if test="value != null and value.length > 0">
+            where fileNumber = #{value} or phoneNumber = #{value} or name = #{value}
+        </if>
+    </select>
+
+    <!--新增会员-->
+    <insert id="addMember" parameterType="com.health.pojo.Member">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        t_member
+        (fileNumber,name,sex,idCard,phoneNumber,
+        regTime,password,email,birthday,remark)
+        values
+        (#{fileNumber},#{name},#{sex},#{idCard},#{phoneNumber},#{regTime},#{password},#{email},#{birthday},#{remark})
+    </insert>
+
+    <!--删除会员-->
+    <delete id="deleteMemberById" parameterType="int">
+        delete
+        from t_member
+        where id = #{id}
+    </delete>
+
+    <!--根据id查询会员-->
+    <select id="findMemberById" parameterType="int" resultType="com.health.pojo.Member">
+        select *
+        from t_member
+        where id = #{id}
+    </select>
+
+    <!--根据id查询会员-->
+    <select id="findMemberByTelephone" parameterType="string" resultType="com.health.pojo.Member">
+        select *
+        from t_member
+        where phoneNumber = #{phoneNumber}
+    </select>
+
+    <!--编辑会员-->
+    <update id="editMember" parameterType="com.health.pojo.Member">
+        update t_member
+        <set>
+            <if test="fileNumber != null">
+                fileNumber = #{fileNumber},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="idCard != null">
+                idCard = #{idCard},
+            </if>
+            <if test="phoneNumber != null">
+                phoneNumber = #{phoneNumber},
+            </if>
+            <if test="regTime != null">
+                regTime = #{regTime},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据日期统计会员数，统计指定日期之前的会员数-->
+    <select id="findMemberCountBeforeDate" parameterType="string" resultType="int">
+        select count(id)
+        from t_member
+        where regTime &lt;= #{value}
+    </select>
+
+    <!--根据日期统计会员数-->
+    <select id="findMemberCountByDate" parameterType="string" resultType="int">
+        select count(id)
+        from t_member
+        where regTime = #{value}
+    </select>
+
+    <!--根据日期统计会员数，统计指定日期之后的会员数-->
+    <select id="findMemberCountAfterDate" parameterType="string" resultType="int">
+        select count(id)
+        from t_member
+        where regTime &gt;= #{value}
+    </select>
+
+    <!--总会员数-->
+    <select id="findMemberTotalCount" resultType="int">
+        select count(id)
+        from t_member
+    </select>
+
+    <resultMap id="orderResultMap" type="com.health.pojo.Order">
+        <id column="id" property="id"/>
+        <result column="member_id" property="memberId"/>
+        <result column="orderDate" property="orderDate"/>
+        <result column="orderType" property="orderType"/>
+        <result column="orderStatus" property="orderStatus"/>
+        <result column="setmeal_id" property="setmealId"/>
+    </resultMap>
+
+    <!--根据预约id查询预约信息，包括体检人信息、套餐信息-->
+    <select id="findOrderById4Detail" parameterType="integer" resultType="map">
+        select m.name member, s.name setmeal, o.orderDate orderDate, o.orderType orderType
+        from t_order o,
+             t_member m,
+             t_setmeal s
+        where o.member_id = m.id
+          and o.setmeal_id = s.id
+          and o.id = #{id}
+    </select>
+
+    <!--新增-->
+    <insert id="addOrder" parameterType="com.health.pojo.Order">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+        t_order
+        (member_id,orderDate,orderType,orderStatus,setmeal_id)
+        values
+        (#{memberId},#{orderDate},#{orderType},#{orderStatus},#{setmealId})
+    </insert>
+
+    <!--动态条件查询-->
+    <select id="findOrderByCondition"
+            parameterType="com.health.pojo.Order"
+            resultMap="orderResultMap">
+        select * from t_order
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="memberId != null">
+                and member_id = #{memberId}
+            </if>
+            <if test="orderDate != null">
+                and orderDate = #{orderDate}
+            </if>
+            <if test="orderType != null">
+                and orderType = #{orderType}
+            </if>
+            <if test="orderStatus != null">
+                and orderStatus = #{orderStatus}
+            </if>
+            <if test="setmealId != null">
+                and setmeal_id = #{setmealId}
+            </if>
+        </where>
+    </select>
+
+    <!--根据日期查询预约设置信息-->
+    <select id="findOrderSettingByOrderDate" parameterType="date" resultType="com.health.pojo.OrderSetting">
+        select *
+        from t_ordersetting
+        where orderDate = #{orderDate}
+    </select>
+    <!--更新已预约人数-->
+    <update id="editOrderSettingReservationsByOrderDate" parameterType="com.health.pojo.OrderSetting">
+        update t_ordersetting
+        set reservations = #{reservations}
+        where orderDate = #{orderDate}
+    </update>
+
+    <!--根据检查组id查询检查项信息-->
+    <select id="findCheckItemByCheckGroupId" resultType="com.health.pojo.CheckItem">
+        select *
+        from t_checkitem
+        where id in (select checkitem_id from t_checkgroup_checkitem where checkgroup_id = #{checkGroupId})
+    </select>
+
+    <resultMap type="com.health.pojo.CheckGroup" id="checkGroupResultMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+    </resultMap>
+    <resultMap type="com.health.pojo.CheckGroup"
+               id="findByIdResultMap"
+               extends="checkGroupResultMap">
+        <collection property="checkItems"
+                    ofType="com.health.pojo.CheckItem"
+                    column="id"
+                    select="com.health.dao.IMobileDao.findCheckItemByCheckGroupId">
+        </collection>
+    </resultMap>
+    <!--根据套餐id查询检查项信息-->
+    <select id="findCheckGroupBySetmealId" resultMap="findByIdResultMap">
+        select *
+        from t_checkgroup
+        where id in (select checkgroup_id from t_setmeal_checkgroup where setmeal_id = #{setmealId})
+    </select>
+
+    <resultMap type="com.health.pojo.Setmeal" id="setmealResultMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="price" property="price"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+        <result column="img" property="img"/>
+    </resultMap>
+    <resultMap type="com.health.pojo.Setmeal" id="findSetmealByIdResultMap" extends="setmealResultMap">
+        <collection property="checkGroups"
+                    ofType="com.health.pojo.CheckGroup"
+                    column="id"
+                    select="com.health.dao.IMobileDao.findCheckGroupBySetmealId">
+        </collection>
+    </resultMap>
+
+    <select id="findSetmealById" resultMap="findSetmealByIdResultMap" parameterType="integer">
+        select *
+        from t_setmeal
+        where id = #{id}
+    </select>
+
+    <select id="findAllSetmeal" resultType="com.health.pojo.Setmeal">
+        select *
+        from t_setmeal
+    </select>
+</mapper>

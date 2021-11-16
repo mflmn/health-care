@@ -30,7 +30,7 @@ public class Order implements Serializable {
     private Integer setmealId;//体检套餐id
 
     public Order(Integer memberId, Date orderDate, String orderType, String orderStatus, int setmealId) {
-        this.memberId = id;
+        this.memberId = memberId;
         this.orderDate = orderDate;
         this.orderType = orderType;
         this.orderStatus = orderStatus;

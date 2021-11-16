@@ -11,10 +11,28 @@
     <title>预约须知</title>
     <link href="../css/page-health-orderNotice.css" rel="stylesheet"/>
     <script src="../plugins/jquery/dist/jquery.min.js"></script>
-    <script src="../plugins/healthmobile.js"></script>
     <script src="../plugins/vue/vue.js"></script>
     <script src="../plugins/vue/axios-0.18.0.js"></script>
     <script>
+        function getUrlParam(paraName) {
+            var url = document.location.toString();
+            // alert(url);
+            var arrObj = url.split("?");
+            if (arrObj.length > 1) {
+                var arrPara = arrObj[1].split("&");
+                var arr;
+                for (var i = 0; i < arrPara.length; i++) {
+                    arr = arrPara[i].split("=");
+                    if (arr != null && arr[0] === paraName) {
+                        return arr[1];
+                    }
+                }
+                return "";
+            } else {
+                return "";
+            }
+        }
+
         var id = getUrlParam("orderId");
     </script>
 </head>
@@ -66,7 +84,7 @@
             orderInfo: {}
         },
         mounted() {
-            axios.post("/order/findById.do?id=" + id).then((response) => {
+            axios.get("/order/findById.do?orderId=" + id).then((response) => {
                 this.orderInfo = response.data.data;
             });
         }
