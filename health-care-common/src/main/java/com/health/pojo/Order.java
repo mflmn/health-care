@@ -28,4 +28,12 @@ public class Order implements Serializable {
     private String orderType;//预约类型 电话预约/微信预约
     private String orderStatus;//预约状态(是否到诊)
     private Integer setmealId;//体检套餐id
+
+    public Order(Integer id, Date date, String orderType, String orderstatusNo, int setmealId) {
+        this.id = id;
+        this.orderDate = date;
+        this.orderType = orderType;
+        this.orderStatus = orderstatusNo;
+        this.setmealId = setmealId;
+    }
 }
