@@ -29,11 +29,11 @@ public class Order implements Serializable {
     private String orderStatus;//预约状态(是否到诊)
     private Integer setmealId;//体检套餐id
 
-    public Order(Integer id, Date date, String orderType, String orderstatusNo, int setmealId) {
-        this.id = id;
-        this.orderDate = date;
+    public Order(Integer memberId, Date orderDate, String orderType, String orderStatus, int setmealId) {
+        this.memberId = id;
+        this.orderDate = orderDate;
         this.orderType = orderType;
-        this.orderStatus = orderstatusNo;
+        this.orderStatus = orderStatus;
         this.setmealId = setmealId;
     }
 }
